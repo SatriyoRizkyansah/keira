@@ -91,9 +91,18 @@
     </style>
   </head>
   <body>
-    <audio id="background-music" autoplay loop>
+    <audio id="background-music" autoplay loop muted>
       <source src="song/lagu.mp3" type="audio/mpeg" />
     </audio>
+
+    <script>
+      const audio = document.getElementById("background-music");
+
+      // Hapus mute setelah pengguna berinteraksi
+      document.body.addEventListener("click", () => {
+        audio.muted = false;
+      });
+    </script>
 
     <div id="game" style="width: 100%"></div>
 
