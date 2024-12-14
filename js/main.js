@@ -117,6 +117,79 @@ function main() {
     }
   }
 
+  document.addEventListener("DOMContentLoaded", function () {
+    const directions = ["up", "down", "left", "right"];
+
+    directions.forEach((dir) => {
+      const button = document.getElementById(dir);
+      if (button) {
+        // Untuk desktop
+        button.addEventListener("click", () => handleDirection(dir));
+
+        // Untuk mobile (touch)
+        button.addEventListener("touchstart", (e) => {
+          e.preventDefault(); // Mencegah klik ganda
+          handleDirection(dir);
+        });
+      }
+    });
+
+    function handleDirection(direction) {
+      console.log("Direction:", direction); // Ganti dengan logika Anda
+    }
+  });
+
+  // Fungsi untuk menambahkan event listener dengan dukungan sentuh
+  function addTouchAndClickListener(element, onTouchStart, onTouchEnd) {
+    element.addEventListener("mousedown", onTouchStart);
+    element.addEventListener("mouseup", onTouchEnd);
+    element.addEventListener("touchstart", (e) => {
+      e.preventDefault(); // Mencegah "click" duplikat
+      onTouchStart();
+    });
+    element.addEventListener("touchend", (e) => {
+      e.preventDefault();
+      onTouchEnd();
+    });
+  }
+
+  // Tambahkan event listener untuk semua tombol
+  addTouchAndClickListener(
+    document.getElementById("up"),
+    () => simulateKeyDown("ArrowUp"),
+    () => simulateKeyUp("ArrowUp")
+  );
+  addTouchAndClickListener(
+    document.getElementById("down"),
+    () => simulateKeyDown("ArrowDown"),
+    () => simulateKeyUp("ArrowDown")
+  );
+  addTouchAndClickListener(
+    document.getElementById("left"),
+    () => simulateKeyDown("ArrowLeft"),
+    () => simulateKeyUp("ArrowLeft")
+  );
+  addTouchAndClickListener(
+    document.getElementById("right"),
+    () => simulateKeyDown("ArrowRight"),
+    () => simulateKeyUp("ArrowRight")
+  );
+  addTouchAndClickListener(
+    document.getElementById("space"),
+    () => simulateKeyDown(" "),
+    () => simulateKeyUp(" ")
+  );
+  addTouchAndClickListener(
+    document.getElementById("i"),
+    () => simulateKeyDown("i"),
+    () => simulateKeyUp("i")
+  );
+  addTouchAndClickListener(
+    document.getElementById("g"),
+    () => simulateKeyDown("g"),
+    () => simulateKeyUp("g")
+  );
+
   function simulateKeyUp(key) {
     // Jika tombol sedang ditekan
     if (keyState[key]) {
@@ -216,7 +289,7 @@ function main() {
       // Don't reset if we're victorious.
       return;
     }
-    resetPuzzle(scene, 4 /* startY */, 1 /* endY */, 6 /* targetX */, 1 /* targetY */, 3 /* keiraX */, 4 /* keiraY */, 5 /* grinchMaxStamina */);
+    resetPuzzle(scene, 4 /* startY */, 1 /* endY */, 6 /* targetX */, 1 /* targetY */, 3 /* keiraX */, 4 /* keiraY */, 10 /* grinchMaxStamina */);
   }
 
   function resetPuzzle(scene, startY, endY, targetX, targetY, pattyX, pattyY, grinchMaxStamina) {
