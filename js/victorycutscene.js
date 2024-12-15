@@ -6,20 +6,34 @@ class VictoryCutscene {
     this.directorState_ = directorState;
     this.confettiSpriteKeys_ = confettiSpriteKeys;
 
+    // Flash Graphics
     this.flashGraphics_ = scene.add.graphics();
     this.flashGraphics_.fillStyle(0xffffff);
     this.flashGraphics_.fillRect(-10000, -10000, 20000, 20000);
-    this.flashGraphics_.depth = Depths.FLASH;
-    this.flashGraphics_.visible = false;
+    this.flashGraphics_.setDepth(Depths.FLASH);
+    this.flashGraphics_.setVisible(false);
 
-    this.cathyText_ = scene.add.text(53, 185, "Yay! KEREN. Maafin aku ya! :3");
-    this.cathyText_.setColor("#ffffcc");
-    this.cathyText_.setFontSize(30);
-    this.cathyText_.setStroke("black", 5);
-    this.cathyText_.fontWeight = "bold";
-    this.cathyText_.depth = Depths.CATHY_TEXT;
-    this.cathyText_.visible = false;
+    // Christmas Message Text
+    const textConfig = {
+      x: scene.cameras.main.centerX, // Lebih dinamis mengikuti posisi tengah layar
+      y: scene.cameras.main.centerY - 120, // Offset ke atas dari tengah layar
+      text: "MERRY CHRISTMAS MY LOVE 🎄\nWishing you a Christmas as magical as our love.\nI'm truly sorry for the times I've hurt you. Maafin aku :(",
+      style: {
+        fontFamily: "Arial",
+        fontSize: "26px",
+        color: "#ffffcc",
+        stroke: "#000000",
+        strokeThickness: 5,
+        fontWeight: "bold",
+        align: "center",
+        wordWrap: { width: 700, useAdvancedWrap: true }, // Tambahkan word wrap
+      },
+    };
+    this.cathyText_ = scene.add.text(textConfig.x, textConfig.y, textConfig.text, textConfig.style).setOrigin(0.5);
+    this.cathyText_.setDepth(Depths.CATHY_TEXT);
+    this.cathyText_.setVisible(false);
 
+    // State
     this.playing_ = false;
   }
 
