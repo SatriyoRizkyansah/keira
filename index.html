@@ -36,8 +36,8 @@
 
       #game {
         width: 100%;
-        height: auto;
-        aspect-ratio: 16 / 9;
+        /* height: 1000p[x]; */
+        /* aspect-ratio: 16 / 9; */
         background-color: #000;
         display: flex;
         justify-content: center;
@@ -98,7 +98,6 @@
     <script>
       const audio = document.getElementById("background-music");
 
-      // Hapus mute setelah pengguna berinteraksi
       document.body.addEventListener("click", () => {
         audio.muted = false;
       });

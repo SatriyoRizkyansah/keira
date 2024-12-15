@@ -56,6 +56,13 @@ class Instructions {
     f(".", left + 83 + 71 + 107 + 125, top, normalColor);
 
     top += lineHeight;
+    let prevText = f("- Move the", left, top, normalColor);
+    prevText = f("boxes", prevText.x + prevText.width + 10, top, keyColor);
+    prevText = f("to make the", prevText.x + prevText.width + 10, top, normalColor);
+    prevText = f("Grinch", prevText.x + prevText.width + 10, top, grinchColor);
+    f("lose his step.", prevText.x + prevText.width + 10, top, normalColor);
+
+    top += lineHeight;
     f("- Press", left, top, normalColor);
     f("G", left + 95, top, keyColor);
     f("to make", left + 95 + 22, top, normalColor);

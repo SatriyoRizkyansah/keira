@@ -289,7 +289,7 @@ function main() {
       // Don't reset if we're victorious.
       return;
     }
-    resetPuzzle(scene, 4 /* startY */, 1 /* endY */, 6 /* targetX */, 1 /* targetY */, 3 /* keiraX */, 4 /* keiraY */, 10 /* grinchMaxStamina */);
+    resetPuzzle(scene, 4 /* startY */, 1 /* endY */, 6 /* targetX */, 1 /* targetY */, 3 /* keiraX */, 4 /* keiraY */, 17 /* grinchMaxStamina */);
   }
 
   function resetPuzzle(scene, startY, endY, targetX, targetY, pattyX, pattyY, grinchMaxStamina) {
